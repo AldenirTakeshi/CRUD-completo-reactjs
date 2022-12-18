@@ -6,7 +6,11 @@ class Alunos extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      alunos: [],
+      alunos: [
+        { id: 1, nome: "Luiz Fernando Nunes", email: "luiz@teste.com" },
+        { id: 2, nome: "João Lucas", email: "joao@teste.com" },
+        { id: 3, nome: "Ana Catarina", email: "ana@teste.com" },
+      ],
     };
   }
 
@@ -22,18 +26,14 @@ class Alunos extends React.Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Atualizar Excluir</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Atualizar Excluir</td>
-          </tr>
+          {this.state.alunos.map((aluno, indice) => (
+            <tr>
+              <td>{indice + 1}</td>
+              <td>{aluno.nome}</td>
+              <td>{aluno.email}</td>
+              <td>Atualizar Excluir</td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     );
