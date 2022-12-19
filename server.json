@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 35,
+      "nome": "Pedro Cardoso",
+      "email": "pedro@teste.com",
+      "ativo": false,
+      "alunosCurso": null
+    },
+    {
+      "id": 36,
+      "nome": "João Silva",
+      "email": "joao@teste.com",
+      "ativo": false,
+      "alunosCurso": null
+    },
+    {
+      "id": 37,
+      "nome": "Maria Fernanda ",
+      "email": "pedro@teste.com",
+      "ativo": false,
+      "alunosCurso": null
+    }
+  ]
+}

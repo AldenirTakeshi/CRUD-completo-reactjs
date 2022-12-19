@@ -6,14 +6,19 @@ class Alunos extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      alunos: [
-        { id: 1, nome: "Luiz Fernando Nunes", email: "luiz@teste.com" },
-        { id: 2, nome: "João Lucas", email: "joao@teste.com" },
-        { id: 3, nome: "Ana Catarina", email: "ana@teste.com" },
-      ],
+      alunos: [],
     };
   }
 
+  componentDidMount() {
+    fetch("http://localhost:3333/users")
+      .then((res) => res.json())
+      .then((dados) => {
+        this.setState({ alunos: dados });
+      });
+  }
+
+  componentWillUnmount() {}
   render() {
     return (
       <Table striped bordered hover>
@@ -26,9 +31,9 @@ class Alunos extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.state.alunos.map((aluno, indice) => (
+          {this.state.alunos.map((aluno, indice, key) => (
             <tr>
-              <td>{indice + 1}</td>
+              <td>{aluno.id}</td>
               <td>{aluno.nome}</td>
               <td>{aluno.email}</td>
               <td>Atualizar Excluir</td>
