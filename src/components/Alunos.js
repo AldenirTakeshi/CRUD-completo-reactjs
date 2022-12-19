@@ -1,6 +1,5 @@
-import { render } from "@testing-library/react";
 import React from "react";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 
 class Alunos extends React.Component {
   constructor(props) {
@@ -11,6 +10,12 @@ class Alunos extends React.Component {
   }
 
   componentDidMount() {
+    this.buscarAlunos();
+  }
+
+  componentWillUnmount() {}
+
+  buscarAlunos() {
     fetch("http://localhost:3333/users")
       .then((res) => res.json())
       .then((dados) => {
@@ -18,7 +23,16 @@ class Alunos extends React.Component {
       });
   }
 
-  componentWillUnmount() {}
+  deletarAluno = (id) => {
+    fetch("http://localhost:3333/users/" + id, { method: "DELETE" }).then(
+      (res) => {
+        if (res.ok) {
+          this.buscarAlunos();
+        }
+      }
+    );
+  };
+
   render() {
     return (
       <Table striped bordered hover>
@@ -31,12 +45,20 @@ class Alunos extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.state.alunos.map((aluno, indice, key) => (
+          {this.state.alunos.map((aluno, indice) => (
             <tr>
-              <td>{aluno.id}</td>
+              <td>{indice + 1}</td>
               <td>{aluno.nome}</td>
               <td>{aluno.email}</td>
-              <td>Atualizar Excluir</td>
+              <td>
+                <Button variant="success">Success</Button>{" "}
+                <Button
+                  variant="danger"
+                  onClick={() => this.deletarAluno(aluno.id)}
+                >
+                  Excluir
+                </Button>{" "}
+              </td>
             </tr>
           ))}
         </tbody>
