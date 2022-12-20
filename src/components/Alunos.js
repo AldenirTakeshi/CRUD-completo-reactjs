@@ -1,11 +1,12 @@
 import React from "react";
-import { Button, Table } from "react-bootstrap";
-import Post from "./Post";
+import { Button, Form, Table } from "react-bootstrap";
 
 class Alunos extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      nome: "",
+      email: "",
       alunos: [],
     };
   }
@@ -34,11 +35,45 @@ class Alunos extends React.Component {
     );
   };
 
+  atualizaNome = (e) => {
+    this.setState({
+      nome: e.target.value,
+    });
+  };
+  atualizaEmail = (e) => {
+    this.setState({
+      email: e.target.value,
+    });
+  };
+
   render() {
     return (
       <>
         <div style={{ margin: "1em 1em" }}>
-          <Post />
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Usuário</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Digite seu nome de usuário"
+                value={this.state.nome}
+                onChange={this.atualizaNome}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Digite seu email"
+                onChange={this.atualizaEmail}
+              />
+            </Form.Group>
+
+            <Button variant="primary" type="submit">
+              Salvar
+            </Button>
+          </Form>
         </div>
         <div style={{ margin: "1em 1em" }}>
           <Table striped bordered hover>
