@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Table } from "react-bootstrap";
+import Post from "./Post";
 
 class Alunos extends React.Component {
   constructor(props) {
@@ -35,34 +36,41 @@ class Alunos extends React.Component {
 
   render() {
     return (
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Opção</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.state.alunos.map((aluno, indice) => (
-            <tr>
-              <td>{indice + 1}</td>
-              <td>{aluno.nome}</td>
-              <td>{aluno.email}</td>
-              <td>
-                <Button variant="success">Success</Button>{" "}
-                <Button
-                  variant="danger"
-                  onClick={() => this.deletarAluno(aluno.id)}
-                >
-                  Excluir
-                </Button>{" "}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+      <>
+        <div style={{ margin: "1em 1em" }}>
+          <Post />
+        </div>
+        <div style={{ margin: "1em 1em" }}>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Opção</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.alunos.map((aluno, indice) => (
+                <tr>
+                  <td>{indice + 1}</td>
+                  <td>{aluno.nome}</td>
+                  <td>{aluno.email}</td>
+                  <td>
+                    <Button variant="success">Success</Button>{" "}
+                    <Button
+                      variant="danger"
+                      onClick={() => this.deletarAluno(aluno.id)}
+                    >
+                      Excluir
+                    </Button>{" "}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        </div>
+      </>
     );
   }
 }
