@@ -1,3 +1,35 @@
 {
-  "users": []
+  "users": [
+    {
+      "id": 35,
+      "nome": "Pedro Cardoso",
+      "email": "pedro@teste.com",
+      "ativo": false,
+      "alunosCurso": null
+    },
+    {
+      "id": 36,
+      "nome": "Mario Zeck",
+      "email": "mario@teste.com",
+      "ativo": false,
+      "alunosCurso": null
+    },
+    {
+      "id": 37,
+      "nome": "João lucas",
+      "email": "joao@teste.com",
+      "ativo": false,
+      "alunosCurso": null
+    },
+    {
+      "nome": "Aldenir",
+      "email": "aldenir@teste.com",
+      "id": 38
+    },
+    {
+      "nome": "Luca Montano",
+      "email": "lucas@teste.com",
+      "id": 39
+    }
+  ]
 }
