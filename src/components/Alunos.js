@@ -58,6 +58,20 @@ class Alunos extends React.Component {
     });
   };
 
+  atualizarAluno = (aluno) => {
+    fetch("http://localhost:3333/users/" + aluno.id, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(aluno),
+    }).then((res) => {
+      if (res.ok) {
+        this.buscarAlunos();
+      } else {
+        alert("Não foi possivel atualizar status do aluno!");
+      }
+    });
+  };
+
   atualizaNome = (e) => {
     this.setState({
       nome: e.target.value,
@@ -70,12 +84,22 @@ class Alunos extends React.Component {
   };
 
   submit = () => {
-    const aluno = {
-      nome: this.state.nome,
-      email: this.state.email,
-    };
-    this.cadastraAluno(aluno);
+    if (this.state.id == 0) {
+      const aluno = {
+        nome: this.state.nome,
+        email: this.state.email,
+      };
+      this.cadastraAluno(aluno);
+    } else {
+      const aluno = {
+        id: this.state.id,
+        nome: this.state.nome,
+        email: this.state.email,
+      };
+      this.atualizarAluno(aluno);
+    }
   };
+
   render() {
     return (
       <>

@@ -22,14 +22,14 @@
       "alunosCurso": null
     },
     {
-      "nome": "Aldenir",
-      "email": "aldenir@teste.com",
-      "id": 38
+      "id": 38,
+      "nome": "Aldenir Takeshi",
+      "email": "aldenir@teste.com"
     },
     {
-      "nome": "Luca Montano",
-      "email": "lucas@teste.com",
-      "id": 39
+      "id": 39,
+      "nome": "Lucas Montano",
+      "email": "lucas@teste.com"
     }
   ]
 }
