@@ -20,18 +20,18 @@
       "alunosCurso": null
     },
     {
-      "id": 38,
-      "nome": "Aldenir Takeshi",
-      "email": "aldenir@teste.com"
+      "nome": "Lucas Vinicius",
+      "email": "lucas@teste.com",
+      "id": 38
     },
     {
-      "id": 39,
-      "nome": "Lucas Montano",
-      "email": "lucas@teste.com"
+      "nome": "Rafael Santos",
+      "email": "rafael@teste.com",
+      "id": 39
     },
     {
-      "nome": "Aline Barros",
-      "email": "aline@teste.com",
+      "nome": "Mateus Eduardo",
+      "email": "mateus@teste.com",
       "id": 40
     }
   ]
