@@ -3,9 +3,7 @@
     {
       "id": 35,
       "nome": "Pedro Cardoso",
-      "email": "pedro@teste.com",
-      "ativo": false,
-      "alunosCurso": null
+      "email": "pedro@teste.com"
     },
     {
       "id": 36,

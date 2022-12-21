@@ -100,6 +100,14 @@ class Alunos extends React.Component {
     }
   };
 
+  reset = () => {
+    this.setState({
+      id: 0,
+      nome: "",
+      email: "",
+    });
+  };
+
   render() {
     return (
       <>
@@ -130,8 +138,16 @@ class Alunos extends React.Component {
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit" onClick={this.submit}>
+            <Button
+              variant="primary"
+              type="submit"
+              onClick={this.submit}
+              style={{ margin: "1em" }}
+            >
               Salvar
+            </Button>
+            <Button variant="secondary" type="submit" onClick={this.reset}>
+              Cacelar
             </Button>
           </Form>
         </div>
@@ -156,13 +172,13 @@ class Alunos extends React.Component {
                       variant="success"
                       onClick={() => this.carregarDados(aluno.id)}
                     >
-                      Atualizar
+                      Editar
                     </Button>{" "}
                     <Button
                       variant="danger"
                       onClick={() => this.deletarAluno(aluno.id)}
                     >
-                      Excluir
+                      Deletar
                     </Button>{" "}
                   </td>
                 </tr>
