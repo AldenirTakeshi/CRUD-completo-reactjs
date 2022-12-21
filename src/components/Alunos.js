@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Form, Table } from "react-bootstrap";
+import { Button, Form, Modal, Table } from "react-bootstrap";
 
 class Alunos extends React.Component {
   constructor(props) {
@@ -9,6 +9,7 @@ class Alunos extends React.Component {
       nome: "",
       email: "",
       alunos: [],
+      modalAberta: false,
     };
   }
 
@@ -42,6 +43,7 @@ class Alunos extends React.Component {
       .then((aluno) => {
         this.setState({ id: aluno.id, nome: aluno.nome, email: aluno.email });
       });
+    this.abrirModal();
   };
 
   cadastraAluno = (aluno) => {
@@ -98,6 +100,7 @@ class Alunos extends React.Component {
       };
       this.atualizarAluno(aluno);
     }
+    this.fecharModal();
   };
 
   reset = () => {
@@ -106,50 +109,82 @@ class Alunos extends React.Component {
       nome: "",
       email: "",
     });
+    this.abrirModal();
+  };
+
+  fecharModal = () => {
+    this.setState({
+      modalAberta: false,
+    });
+  };
+  abrirModal = () => {
+    this.setState({
+      modalAberta: true,
+    });
   };
 
   render() {
     return (
       <>
+        <div>
+          <Modal show={this.state.modalAberta} onHide={this.fecharModal}>
+            <Modal.Header closeButton>
+              <Modal.Title>Modal heading</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {" "}
+              <div style={{ margin: "1em 1em" }}>
+                <Form>
+                  <Form.Group className="mb-3">
+                    <Form.Label>ID:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      value={this.state.id}
+                      readOnly={true}
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3">
+                    <Form.Label>Usuário:</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Digite seu nome de usuário"
+                      value={this.state.nome}
+                      onChange={this.atualizaNome}
+                    />
+                  </Form.Group>
+
+                  <Form.Group className="mb-3">
+                    <Form.Label>Email:</Form.Label>
+                    <Form.Control
+                      type="email"
+                      placeholder="Digite seu email"
+                      value={this.state.email}
+                      onChange={this.atualizaEmail}
+                    />
+                  </Form.Group>
+                </Form>
+              </div>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={this.fecharModal}>
+                Fechar
+              </Button>
+              <Button
+                variant="primary"
+                type="submit"
+                onClick={this.submit}
+                style={{ margin: "1em" }}
+              >
+                Salvar
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
         <div style={{ margin: "1em 1em" }}>
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Label>ID:</Form.Label>
-              <Form.Control type="text" value={this.state.id} readOnly={true} />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label>Usuário:</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Digite seu nome de usuário"
-                value={this.state.nome}
-                onChange={this.atualizaNome}
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3">
-              <Form.Label>Email:</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Digite seu email"
-                value={this.state.email}
-                onChange={this.atualizaEmail}
-              />
-            </Form.Group>
-
-            <Button
-              variant="primary"
-              type="submit"
-              onClick={this.submit}
-              style={{ margin: "1em" }}
-            >
-              Salvar
-            </Button>
-            <Button variant="secondary" type="submit" onClick={this.reset}>
-              Cacelar
-            </Button>
-          </Form>
+          <Button variant="warning" onClick={this.reset}>
+            Novo
+          </Button>
         </div>
         <div style={{ margin: "1em 1em" }}>
           <Table striped bordered hover>
